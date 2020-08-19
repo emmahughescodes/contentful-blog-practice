@@ -6,7 +6,7 @@ if ( process.env.NODE_ENV !== 'production' ) {
 
 module.exports = {
   siteMetadata: {
-    title: `Emma's First Blog with Contentful`,
+    title: `Emma's First Blog with Contentful awesome`,
     author: {
       name: `Emma`,
       summary: `who lives and works in Toronto trying all the things.`,
