@@ -1,8 +1,11 @@
-const dotenv = require( 'dotenv' );
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
-if ( process.env.NODE_ENV !== 'production' ) {
-  dotenv.config();
-}
+console.log('Using environment config: ${activeEnv}')
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   siteMetadata: {
@@ -85,9 +88,9 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `723rjewxkzsr`,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      }
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      },
     },
     `@contentful/gatsby-transformer-contentful-richtext`,
     `gatsby-transformer-remark`,
